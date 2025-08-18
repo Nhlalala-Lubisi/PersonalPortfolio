@@ -1,1 +1,1 @@
-Welcome to my personal portfolio. Here you will learn more about me and what I do.
+Welcome to my personal portfolio. Here you will find out more about who I am and what I do.
