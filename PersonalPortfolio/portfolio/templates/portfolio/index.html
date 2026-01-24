@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav center-nav">
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certs">Certifications</a></li>
+        <li><a href="#languages">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="accent">Nhlalala Lubisi</span></h1>
+          <p class="subtitle">Information Technology Graduate | FullStack Developer</p>
+          <div class="cta-group">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn outline" href="#contact">Contact Me</a>
+          </div>
+          <div class="social-links">
+            <div class="social-item">
+              <a href="https://www.linkedin.com/in/nhlalala-lubisi-70b347294" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <span>LinkedIn</span>
+            </div>
+            <div class="social-item">
+              <a href="https://instagram.com/nhlakzin_" target="_blank"><i class="fab fa-instagram"></i></a>
+              <span>Instagram</span>
+            </div>
+            <div class="social-item">
+              <a href="https://github.com/Nhlalala-Lubisi" target="_blank"><i class="fab fa-github"></i></a>
+              <span>GitHub</span>
+            </div>
+            <div class="social-item">
+              <a href="mailto:lubisinhlaks685@gmail.com"><i class="fas fa-envelope"></i></a>
+              <span>Email</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="{% static 'images/profile.jpg' %}" alt="Nhlalala Lubisi">
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>Professional Summary</h2>
+        <p>Welcome to my personal portfolio. I am a final-year university student studying Information Technology with multiple certifications including a certificate in Fullstack Development, skilled in HTML, CSS, JavaScript, Java, Python, VB.NET, PHP, PL/SQL, REST APIs, and Django. Known for my discipline, adaptability, and strong work ethic, I have excelled exceptionally in my academics, also I have demonstrated leadership and teamwork as the most disciplined player for Kwathema United soccer team. I am passionate about using technology to solve problems and I am currently seeking internships or graduate programme opportunities to apply my skills and grow within the tech industry. </p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section alt">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="education-item">
+          <h3>Vaal University of Technology</h3>
+          <p class="muted">Advanced Diploma in Information Technology(NQF 7) • 2026 – 2026</p>
+          <p>A comprehensive program covering Computer security, stats for IT, IT auditing, UX Design, and more.</p>
+          <p>Grade: Pending</p>
+          <h3>Vaal University of Technology</h3>
+          <p class="muted">Diploma in Information Technology(NQF 6) • 2023 – 2025</p>
+          <p>A comprehensive program covering Software development, Web development, Database administration, Networking, Business analysis, Project management, AI&ML, and more.</p>
+          <p>Grade: 78%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="grid cards">
+          {% for p in projects %}
+          <article class="card">
+            {% if p.image %}
+            <img src="{{ p.image.url }}" alt="{{ p.title }}" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            {% endif %}
+            <div class="card-body">
+              <h3>{{ p.title }}</h3>
+              <p>{{ p.description|default:"No description provided." }}</p>
+              <p class="muted"><strong>Tech stack:</strong> {{ p.tech_stack }}</p>
+            </div>
+            <div class="card-actions">
+              {% if p.github_url %}<a href="{{ p.github_url }}" target="_blank">GitHub</a>{% endif %}
+              {% if p.live_url %}<a href="{{ p.live_url }}" target="_blank">Open app</a>{% endif %}
+            </div>
+          </article>
+          {% empty %}
+          <p>No projects yet — add some in the admin!</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs" class="section alt">
+      <div class="container">
+        <h2>Certifications</h2>
+        <div class="grid cards">
+          {% for c in certs %}
+          <article class="card">
+            {% if c.image %}
+            <img src="{{ c.image.url }}" alt="{{ c.name }}" style="width:100%; border-radius:10px; margin-bottom:10px;">
+            {% endif %}
+            <div class="card-body">
+              <h3>{{ c.name }}</h3>
+              <p class="muted">{{ c.issuer }} • {{ c.date_earned|date:"F Y" }}</p>
+              {% if c.credential_url %}<a href="{{ c.credential_url }}" target="_blank">Verify Credential</a>{% endif %}
+            </div>
+          </article>
+          {% empty %}
+          <p>No certifications yet — add some in the admin!</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" class="section">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="grid lang-grid">
+          {% for l in langs %}
+          <div class="lang">
+            <span class="lang-name">{{ l.name }}</span>
+          </div>
+          {% empty %}
+          <p>No languages yet — add some in the admin!</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CV -->
+    {% if cv %}
+    <section id="download-cv" class="section alt">
+      <div class="container" style="text-align:center;">
+        <h2>Download My CV</h2>
+        <a href="{{ cv.file.url }}" class="btn" download>
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Contact -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 0711879501 / 0672339793</p>
+          <p><i class="fas fa-envelope"></i> lubisinhlaks685@gmail.com</p>
+        </div>
+        {% if messages %}
+        <div class="messages">
+          {% for m in messages %}
+          <div class="message {{ m.tags }}">{{ m }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post" class="contact-form">
+          {% csrf_token %}
+          <div class="form-row">{{ form.name.label_tag }} {{ form.name }}</div>
+          <div class="form-row">{{ form.email.label_tag }} {{ form.email }}</div>
+          <div class="form-row">{{ form.message.label_tag }} {{ form.message }}</div>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© {{ now|default:2025 }} Nhlalala Lubisi • All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
