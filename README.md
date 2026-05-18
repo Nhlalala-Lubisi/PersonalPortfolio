@@ -14,10 +14,10 @@ It is designed with a clean UI, smooth user experience, and responsive layout fo
 
 Built With
 
-HTML5
+1. HTML5
 
-CSS3
+2. CSS3
 
-JavaScript
+3. JavaScript
 
-Python (Django)
+4. Python (Django)
