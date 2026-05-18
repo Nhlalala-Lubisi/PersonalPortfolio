@@ -13,7 +13,11 @@ This portfolio website was built to serve as a central hub for my professional i
 It is designed with a clean UI, smooth user experience, and responsive layout for all devices.
 
 Built With
+
 HTML5
+
 CSS3
-JavaScript (Vanilla / Framework if applicable)
+
+JavaScript
+
 Python (Django)
