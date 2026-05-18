@@ -14,6 +14,9 @@ It is designed with a clean UI, smooth user experience, and responsive layout fo
 
 Built With
 HTML5
+
 CSS3
+
 JavaScript (Vanilla / Framework if applicable)
+
 Python (Django)
